@@ -4,6 +4,8 @@ export class HomePage {
   constructor() {
     this.profileButton = "#user_dropdown > .dropdown-toggle";
     this.logoffButton = "#logout > a";
+    this.welcomePageHeader = "#welcome-page-header";
+    cy.get(this.welcomePageHeader).should("be.visible");
   }
 
   clickProfile() {

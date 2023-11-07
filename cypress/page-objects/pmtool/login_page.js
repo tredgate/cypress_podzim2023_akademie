@@ -8,6 +8,10 @@ export class LoginPage {
     this.passwordInput = "#password";
     this.loginButton = ".btn";
     this.forgetPasswordButton = "#forget_password";
+    this.pageHeader = "h3.form-title";
+    this.logo = ".login-page-logo img";
+    this.rememberMeCheckbox = ".checkbox";
+    this.alertDiv = ".alert-danger";
   }
 
   openPmtool() {
@@ -33,5 +37,48 @@ export class LoginPage {
   clickPasswordForgotten() {
     cy.get(this.forgetPasswordButton).click();
     return new LostPasswordPage();
+  }
+
+  pageHeaderHasText(headerText) {
+    cy.get(this.pageHeader).should("have.text", headerText);
+    return this;
+  }
+
+  usernameHasPlaceholder(placeholderText) {
+    cy.get(this.usernameInput).should(
+      "have.attr",
+      "placeholder",
+      placeholderText
+    );
+    return this;
+  }
+
+  passwordHasPlaceholder(placeholderText) {
+    cy.get(this.passwordInput).should(
+      "have.attr",
+      "placeholder",
+      placeholderText
+    );
+    return this;
+  }
+
+  rememberMeHasText(rememberMeText) {
+    cy.get(this.rememberMeCheckbox).should("have.text", rememberMeText);
+    return this;
+  }
+
+  passwordForgottenHasText(elementText) {
+    cy.get(this.forgetPasswordButton).should("have.text", elementText);
+    return this;
+  }
+
+  logoIsVisible() {
+    cy.get(this.logo).should("be.visible");
+    return this;
+  }
+
+  alertNotExist() {
+    cy.get(this.alertDiv).should("not.exist");
+    return this;
   }
 }
