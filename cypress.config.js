@@ -7,5 +7,6 @@ module.exports = defineConfig({
     },
     watchForFileChanges: false,
     defaultCommandTimeout: 10000,
+    chromeWebSecurity: false,
   },
 });

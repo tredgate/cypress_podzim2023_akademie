@@ -1,20 +1,9 @@
-import { LoginPage } from "./login_page";
+import { HeaderSection } from "./header_section";
 
-export class HomePage {
+export class HomePage extends HeaderSection {
   constructor() {
-    this.profileButton = "#user_dropdown > .dropdown-toggle";
-    this.logoffButton = "#logout > a";
+    super();
     this.welcomePageHeader = "#welcome-page-header";
     cy.get(this.welcomePageHeader).should("be.visible");
-  }
-
-  clickProfile() {
-    cy.get(this.profileButton).click();
-    return this;
-  }
-
-  clickLogoff() {
-    cy.get(this.logoffButton).click();
-    return new LoginPage();
   }
 }
