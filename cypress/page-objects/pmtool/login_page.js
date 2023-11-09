@@ -25,7 +25,7 @@ export class LoginPage {
   }
 
   typePassword(password) {
-    cy.get(this.passwordInput).type(password);
+    cy.get(this.passwordInput).type(password, { log: false });
     return this;
   }
 
