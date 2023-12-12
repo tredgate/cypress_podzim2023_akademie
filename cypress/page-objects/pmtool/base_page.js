@@ -8,5 +8,6 @@ export class BasePage {
     const finalUrl = this.baseUrl + this.path;
     cy.log(`Opening page: ${finalUrl}`);
     cy.visit(finalUrl);
+    return this;
   }
 }

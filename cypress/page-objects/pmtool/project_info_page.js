@@ -8,6 +8,8 @@ export class ProjectInfoPage extends HeaderSection {
     this.startDateTd = ".check-form-tabs .form-group-159 td";
     this.addedDateTd = ".check-form-tabs .form-group-154 td";
     this.createdByTd = ".check-form-tabs .form-group-155 td";
+    this.descriptionDiv = ".portlet-body .content_box_content";
+    this.priorityDiv = ".form-group-156 div";
   }
 
   projectTitleHasText(projectTitle) {
@@ -32,6 +34,16 @@ export class ProjectInfoPage extends HeaderSection {
 
   createdByHasText(author) {
     cy.get(this.createdByTd).should("have.text", author);
+    return this;
+  }
+
+  priorityHasText(priority) {
+    cy.get(this.priorityDiv).should("have.text", priority);
+    return this;
+  }
+
+  descriptionHasText(description) {
+    cy.get(this.descriptionDiv).should("have.text", description);
     return this;
   }
 }

@@ -8,6 +8,7 @@ export class CreateProjectModal {
     this.startDateInput = "div[data-testid='Start Date'] input";
     this.fileUpload = "input[type='file'][data-msg-accept]";
     this.saveButton = ".modal-footer .btn-primary";
+    this.descriptionIframe = "iframe[tabindex]";
   }
 
   selectPriority(priority) {
@@ -40,5 +41,14 @@ export class CreateProjectModal {
   clickSave() {
     cy.get(this.saveButton).click();
     return new TasksPage();
+  }
+
+  typeDescription(description) {
+    cy.get(this.descriptionIframe).then(($iframe) => {
+      const body = $iframe.contents().find("body");
+      cy.wrap(body).as("iframe");
+    });
+    cy.get("@iframe").type(description);
+    return this;
   }
 }
